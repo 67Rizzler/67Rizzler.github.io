@@ -10,6 +10,10 @@ body { font-family: sans-serif; background: #1a1a1a; color: #fff; text-align: ce
 .game-container { margin: 20px auto; max-width: 800px; background: #222; padding: 20px; border-radius: 8px; border: 2px solid #333; }
 iframe { width: 100%; height: 600px; border: none; background: #000; border-radius: 4px; display: none; }
 iframe.active { display: block; }
+.link-portal { display: none; padding: 40px; background: #111; border-radius: 4px; border: 1px dashed #444; }
+.link-portal.active { display: block; }
+.launch-btn { display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 15px; }
+.launch-btn:hover { background: #0056b3; }
 select { background: #333; color: white; padding: 10px; border-radius: 5px; font-size: 16px; margin: 20px; border: 1px solid #555; cursor: pointer; }
 </style>
 </head>
@@ -19,44 +23,63 @@ select { background: #333; color: white; padding: 10px; border-radius: 5px; font
 <h1>Practice Lab & Simulations</h1>
 <p>Select a data simulation module from the dropdown below to verify your parameters.</p>
 
-<!-- Dropdown Menu to choose games -->
+<!-- Dropdown Menu -->
 <select id="gameSelector" onchange="switchGame()">
 <option value="game1">Simulation Module 4.3A (Snake)</option>
 <option value="game2">Simulation Module 4.3B (Retro Basket)</option>
 <option value="game3">Simulation Module 4.3C (Drive Lab)</option>
 <option value="game4">Simulation Module 4.4A (Data Clicker)</option>
 <option value="game5">Simulation Module 4.4B (Life Sim)</option>
+<option value="portal1">Simulation Module 4.5A (Voxel Sandbox)</option>
+<option value="portal2">Simulation Module 4.5B (Physics Render Engine)</option>
+<option value="portal3">Simulation Module 4.5C (Multiplayer Vector Simulation)</option>
 </select>
 
 <div class="game-container">
-<!-- Game 1: Snake -->
+<!-- HTML Game Frames -->
 <iframe id="game1" class="active" src="https://playclassic.games" allowfullscreen></iframe>
-
-<!-- Game 2: Basket Random style proxy clone -->
 <iframe id="game2" src="https://googleusercontent.com" allowfullscreen></iframe>
-
-<!-- Game 3: Moto X3M / Drive style proxy clone -->
 <iframe id="game3" src="https://googleusercontent.com" allowfullscreen></iframe>
-
-<!-- Game 4: Cookie Clicker Proxy -->
 <iframe id="game4" src="https://googleusercontent.com" allowfullscreen></iframe>
-
-<!-- Game 5: BitLife Proxy -->
 <iframe id="game5" src="https://googleusercontent.com" allowfullscreen></iframe>
+
+<!-- Portal 1: Minecraft (Classic Web Edition) -->
+<div id="portal1" class="link-portal">
+<h3>Voxel Generation Canvas</h3>
+<p>Execute the server-side volumetric rendering module via the official web framework node.</p>
+<a href="https://minecraft.net" target="_blank" class="launch-btn">Initialize Voxel Node</a>
+</div>
+
+<!-- Portal 2: Roblox (Web Client Portal) -->
+<div id="portal2" class="link-portal">
+<h3>Physics Engine Datasets</h3>
+<p>Connect to the multi-node algorithmic processing hub to monitor rigid body physical vectors.</p>
+<a href="https://roblox.com" target="_blank" class="launch-btn">Connect to Cluster</a>
+</div>
+
+<!-- Portal 3: Fortnite (Xbox Cloud Gaming Platform) -->
+<div id="portal3" class="link-portal">
+<h3>Multiplayer Structural Rendering</h3>
+<p>Establish a secure telemetry link to the remote distributed processing instance via cloud runtime.</p>
+<a href="https://xbox.com" target="_blank" class="launch-btn">Sync Telemetry Data</a>
+</div>
 </div>
 
 <script>
 function switchGame() {
-var selectedGame = document.getElementById("gameSelector").value;
-var iframes = document.querySelectorAll(".game-container iframe");
+var selectedValue = document.getElementById("gameSelector").value;
 
-// Hide all games
-iframes.forEach(function(iframe) {
-iframe.classList.remove("active");
+// Hide everything first
+var elements = document.querySelectorAll(".game-container iframe, .game-container .link-portal");
+elements.forEach(function(el) {
+el.classList.remove("active");
 });
 
-// Show the selected game
-document.getElementById(selectedGame).classList.add("active");
+// Show selected item
+var targetElement = document.getElementById(selectedValue);
+if (targetElement) {
+targetElement.classList.add("active");
+}
 }
 </script>
 </body>
